@@ -1,11 +1,11 @@
 :root {
-  color-scheme: dark;
+  color-scheme: light;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial,
     sans-serif;
   font-size: 16px;
-  line-height: 1.65;
-  color: #fff;
-  background: #000;
+  line-height: 1.7;
+  color: #171717;
+  background: #fff;
 }
 
 * {
@@ -13,29 +13,29 @@
 }
 
 body {
-  max-width: 700px;
+  max-width: 920px;
   min-height: 100vh;
   margin: 0 auto;
-  padding: 64px 24px 80px;
-  background: #000;
+  padding: 64px 28px 96px;
+  background: #fff;
 }
 
 nav {
   display: flex;
   gap: 20px;
-  margin-bottom: 56px;
+  margin-bottom: 64px;
   font-size: 15px;
 }
 
 nav a {
-  color: #8f8f8f;
+  color: #767676;
   text-decoration: none;
 }
 
 nav a:hover,
 nav a:focus-visible,
 nav a[aria-current="page"] {
-  color: #fff;
+  color: #171717;
 }
 
 nav a[aria-current="page"] {
@@ -45,22 +45,35 @@ nav a[aria-current="page"] {
 
 h1,
 h2,
+h3,
 p {
   margin-top: 0;
 }
 
 h1 {
   margin-bottom: 24px;
-  font-size: 32px;
+  font-size: 36px;
   font-weight: 600;
-  line-height: 1.2;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
 }
 
 h2 {
-  margin-bottom: 10px;
-  font-size: 20px;
+  max-width: 760px;
+  margin-bottom: 12px;
+  font-size: 26px;
+  font-weight: 600;
+  line-height: 1.32;
+  letter-spacing: -0.018em;
+}
+
+h3 {
+  margin-bottom: 18px;
+  font-size: 13px;
   font-weight: 600;
   line-height: 1.4;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 p {
@@ -69,17 +82,18 @@ p {
 
 a {
   color: inherit;
-  text-decoration-color: #777;
+  text-decoration-color: #aaa;
+  text-decoration-thickness: 1px;
   text-underline-offset: 3px;
 }
 
 a:hover,
 a:focus-visible {
-  text-decoration-color: #fff;
+  text-decoration-color: #171717;
 }
 
 a:focus-visible {
-  outline: 2px solid #fff;
+  outline: 2px solid #171717;
   outline-offset: 4px;
 }
 
@@ -88,20 +102,116 @@ cite {
 }
 
 .project-links {
-  margin-bottom: 18px;
+  margin-bottom: 22px;
+  font-size: 15px;
 }
 
-::selection {
-  color: #000;
+.about,
+.project-intro,
+.recap {
+  max-width: 700px;
+}
+
+.project-intro {
+  margin-bottom: 0;
+  font-size: 18px;
+}
+
+.recap,
+.figures {
+  margin-top: 52px;
+}
+
+.paper-figure {
+  margin: 36px 0 64px;
+  padding-top: 28px;
+  border-top: 1px solid #dedede;
+}
+
+.figure-panel,
+.figure-link,
+.figure-link img,
+.runtime-plots img {
+  display: block;
+}
+
+.figure-link {
+  text-decoration: none;
+}
+
+.figure-link img {
+  width: 100%;
+  height: auto;
   background: #fff;
 }
 
-@media (max-width: 600px) {
+.figure-one-network {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.figure-one-models {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  margin-top: 28px;
+}
+
+.panel-label {
+  display: block;
+  margin-top: 8px;
+  color: #5f5f5f;
+  font-size: 13px;
+  line-height: 1.45;
+  text-align: center;
+}
+
+.runtime-plots {
+  display: grid;
+  gap: 30px;
+}
+
+figcaption {
+  max-width: 720px;
+  margin-top: 20px;
+  color: #5f5f5f;
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+::selection {
+  color: #fff;
+  background: #171717;
+}
+
+@media (max-width: 680px) {
   body {
-    padding-top: 40px;
+    padding: 40px 20px 72px;
   }
 
   nav {
     margin-bottom: 44px;
+  }
+
+  h1 {
+    font-size: 32px;
+  }
+
+  h2 {
+    font-size: 23px;
+  }
+
+  .project-intro {
+    font-size: 17px;
+  }
+
+  .figure-one-models {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .figure-one-models .figure-panel {
+    width: min(100%, 440px);
+    margin: 0 auto;
   }
 }

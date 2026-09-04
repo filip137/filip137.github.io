@@ -3,12 +3,18 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#000000">
+    <meta name="theme-color" content="#ffffff">
     <meta
       name="description"
       content="Projects by Filip Osana on fast simulation and learning in nonlinear deep resistive networks."
     >
     <title>Projects — Filip Osana</title>
+    <meta property="og:title" content="Projects — Filip Osana">
+    <meta
+      property="og:description"
+      content="Fast simulation of nonlinear deep resistive networks for energy-based computation."
+    >
+    <meta property="og:type" content="website">
     <link rel="stylesheet" href="/styles.css">
   </head>
   <body>
@@ -19,14 +25,14 @@
       </nav>
     </header>
 
-    <main>
+    <main class="project-page">
       <h1>Projects</h1>
-      <article>
+      <article class="project">
         <h2>Fast simulation of nonlinear deep resistive networks for energy-based computation.</h2>
         <p class="project-links">
           <a href="https://github.com/filip137/nonlinear-drn-paper">Code</a>
         </p>
-        <p>
+        <p class="project-intro">
           In this work, I extend the coordinate-descent approach introduced by
           Benjamin Scellier in
           <cite><a href="https://proceedings.mlr.press/v235/scellier24a.html">A fast algorithm to simulate nonlinear resistive networks</a></cite>
@@ -34,6 +40,136 @@
           the simulation of very large, realistic networks: comparisons against
           SPICE show speed-ups of up to 1,400× while maintaining high accuracy.
         </p>
+
+        <section class="recap" aria-labelledby="recap-heading">
+          <h3 id="recap-heading">Paper in brief</h3>
+          <p>
+            Deep resistive networks compute by relaxing a nonlinear electrical
+            circuit to equilibrium. Simulating that equilibrium repeatedly is a
+            major bottleneck during training, and existing fast coordinate-descent
+            methods were limited to ideal-diode models.
+          </p>
+          <p>
+            I generalize the method to realistic monotone device laws: single
+            Shockley diodes, antiparallel double-Shockley diodes, and tabulated
+            piecewise-linear current–voltage curves. Each node update remains a
+            local Kirchhoff-current-law solve, so alternate network layers can be
+            updated efficiently in parallel.
+          </p>
+          <p>
+            On one- to three-hidden-layer Digits networks, the solver stays below
+            1.1 × 10<sup>−4</sup> P90 relative voltage error against SPICE. It also
+            makes 100-epoch training of a 1568 × 100 × 20 nonlinear network on
+            MNIST practical, reaching about 3% test error.
+          </p>
+        </section>
+
+        <section class="figures" aria-labelledby="figures-heading">
+          <h3 id="figures-heading">Figures</h3>
+
+          <figure class="paper-figure">
+            <div class="figure-one-network figure-panel">
+              <a class="figure-link" href="/assets/figure-1-network.png">
+                <img
+                  src="/assets/figure-1-network.png"
+                  alt="Resistive network with voltage and current sources, linear conductances, and grounded nonlinear elements"
+                  width="918"
+                  height="545"
+                  loading="lazy"
+                  decoding="async"
+                >
+              </a>
+              <span class="panel-label">(a) Network class</span>
+            </div>
+
+            <div class="figure-one-models">
+              <div class="figure-panel">
+                <a class="figure-link" href="/assets/figure-1-single-shockley.png">
+                  <img
+                    src="/assets/figure-1-single-shockley.png"
+                    alt="Current–voltage curve of a single Shockley diode"
+                    width="938"
+                    height="704"
+                    loading="lazy"
+                    decoding="async"
+                  >
+                </a>
+                <span class="panel-label">(b) Single Shockley diode</span>
+              </div>
+              <div class="figure-panel">
+                <a class="figure-link" href="/assets/figure-1-double-shockley.png">
+                  <img
+                    src="/assets/figure-1-double-shockley.png"
+                    alt="Current–voltage curve of an antiparallel double-Shockley diode"
+                    width="938"
+                    height="704"
+                    loading="lazy"
+                    decoding="async"
+                  >
+                </a>
+                <span class="panel-label">(c) Double-Shockley diode</span>
+              </div>
+              <div class="figure-panel">
+                <a class="figure-link" href="/assets/figure-1-pwl.png">
+                  <img
+                    src="/assets/figure-1-pwl.png"
+                    alt="Monotone piecewise-linear current–voltage curve"
+                    width="938"
+                    height="704"
+                    loading="lazy"
+                    decoding="async"
+                  >
+                </a>
+                <span class="panel-label">(d) Piecewise-linear curve</span>
+              </div>
+            </div>
+
+            <figcaption>
+              <strong>Figure 1.</strong> The class of resistive networks and the
+              three nonlinear device models considered in the work.
+            </figcaption>
+          </figure>
+
+          <figure class="paper-figure">
+            <div class="runtime-plots">
+              <a class="figure-link" href="/assets/runtime-single-shockley.png">
+                <img
+                  src="/assets/runtime-single-shockley.png"
+                  alt="Runtime comparison between coordinate descent and SPICE for single-Shockley networks"
+                  width="2700"
+                  height="1800"
+                  loading="lazy"
+                  decoding="async"
+                >
+              </a>
+              <a class="figure-link" href="/assets/runtime-double-shockley.png">
+                <img
+                  src="/assets/runtime-double-shockley.png"
+                  alt="Runtime comparison between coordinate descent and SPICE for double-Shockley networks"
+                  width="2700"
+                  height="1800"
+                  loading="lazy"
+                  decoding="async"
+                >
+              </a>
+              <a class="figure-link" href="/assets/runtime-pwl.png">
+                <img
+                  src="/assets/runtime-pwl.png"
+                  alt="Runtime comparison between coordinate descent and SPICE for piecewise-linear networks"
+                  width="2700"
+                  height="1800"
+                  loading="lazy"
+                  decoding="async"
+                >
+              </a>
+            </div>
+            <figcaption>
+              <strong>Runtime scaling.</strong> Matched CPU simulations on Digits
+              networks. Solid lines show coordinate descent; dashed lines show
+              SPICE. The advantage grows rapidly with network width and depth.
+            </figcaption>
+          </figure>
+        </section>
       </article>
     </main>
   </body>
