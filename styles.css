@@ -168,7 +168,9 @@ cite {
 
 .runtime-plots {
   display: grid;
-  gap: 30px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  align-items: start;
 }
 
 figcaption {
@@ -208,6 +210,11 @@ figcaption {
   .figure-one-models {
     grid-template-columns: 1fr;
     gap: 28px;
+  }
+
+  .runtime-plots {
+    grid-template-columns: 1fr;
+    gap: 24px;
   }
 
   .figure-one-models .figure-panel {
