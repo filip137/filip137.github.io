@@ -41,13 +41,12 @@
         <section class="recap" aria-labelledby="recap-heading">
           <h3 id="recap-heading">Paper in brief</h3>
           <p>
-            Deep resistive networks are electronic implementations of energy-based
-            computation whose layered topology mirrors deep neural networks.
-            Conductances encode trainable parameters, nonlinear devices act as
-            activation functions, and node voltages settle according to Kirchhoff’s
-            current law. For monotone nonlinearities, this equilibrium minimizes an
-            electrical content function, making the circuits compatible with
-            Equilibrium Propagation and local learning from free and nudged states.
+            Deep resistive networks are nonlinear electrical circuits that can be
+            trained using Equilibrium Propagation. Their node voltages act as state
+            variables, conductances encode the trainable parameters, and nonlinear
+            devices play the role of activation functions. Computation occurs as the
+            voltages relax to an equilibrium determined by Kirchhoff’s current law;
+            learning uses local differences between free and nudged equilibria.
           </p>
           <p>
             Before these systems can be built at useful scale, they must be trained
