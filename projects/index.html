@@ -33,34 +33,29 @@
           <a href="https://github.com/filip137/nonlinear-drn-paper">Code</a>
         </p>
         <p class="project-intro">
-          In this work, I extend the coordinate-descent approach introduced by
-          Benjamin Scellier in
-          <cite><a href="https://proceedings.mlr.press/v235/scellier24a.html">A fast algorithm to simulate nonlinear resistive networks</a></cite>
-          to deep resistive networks with realistic nonlinearities. This enables
-          the simulation of very large, realistic networks: comparisons against
-          SPICE show speed-ups of up to 1,400× while maintaining high accuracy.
+          I applied the coordinate-descent approach introduced by
+          <a href="https://proceedings.mlr.press/v235/scellier24a.html">Benjamin Scellier</a>
+          to networks with realistic nonlinearities.
         </p>
 
         <section class="recap" aria-labelledby="recap-heading">
           <h3 id="recap-heading">Paper in brief</h3>
           <p>
-            Deep resistive networks compute by relaxing a nonlinear electrical
-            circuit to equilibrium. Simulating that equilibrium repeatedly is a
-            major bottleneck during training, and existing fast coordinate-descent
-            methods were limited to ideal-diode models.
+            Deep resistive networks are electronic implementations of energy-based
+            computation whose layered topology mirrors deep neural networks.
+            Conductances encode trainable parameters, nonlinear devices act as
+            activation functions, and node voltages settle according to Kirchhoff’s
+            current law. For monotone nonlinearities, this equilibrium minimizes an
+            electrical content function, making the circuits compatible with
+            Equilibrium Propagation and local learning from free and nudged states.
           </p>
           <p>
-            I generalize the method to realistic monotone device laws: single
-            Shockley diodes, antiparallel double-Shockley diodes, and tabulated
-            piecewise-linear current–voltage curves. Each node update remains a
-            local Kirchhoff-current-law solve, so alternate network layers can be
-            updated efficiently in parallel.
-          </p>
-          <p>
-            On one- to three-hidden-layer Digits networks, the solver stays below
-            1.1 × 10<sup>−4</sup> P90 relative voltage error against SPICE. It also
-            makes 100-epoch training of a 1568 × 100 × 20 nonlinear network on
-            MNIST practical, reaching about 3% test error.
+            Before these systems can be built at useful scale, they must be trained
+            and tested in simulation—often requiring millions of equilibrium
+            solves. SPICE provides reliable reference solutions, but treats each
+            solve as a generic nonlinear circuit problem and does not exploit the
+            layered structure or repeated nature of DRN computation. This makes
+            large nonlinear DRNs prohibitively slow to study.
           </p>
         </section>
 
